@@ -22,8 +22,6 @@ const Home=()=>{
                temp:results.main.temp,
                humidity:results.main.humidity,
                desc:results.weather[0].description,
-               icon:results.weather[0].icon,
-
            })
         })
     }
