@@ -10,11 +10,11 @@ The setInfo method assigns the fetched value to the variables.
 In App.js the method Home will be imported and executed.
 
 Folder Structure:\
-       -Desktop:\
-          -Project Folder:\
-             -src:\
-                -componentsfolder:\
-                     *APICALL.js\
-                -App.js
+-Desktop:\
+----Project Folder:\
+--------src:\
+-----------componentsfolder:\
+----------------APICALL.js\
+-----------App.js
              
 
