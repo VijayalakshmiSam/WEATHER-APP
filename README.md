@@ -15,6 +15,7 @@ Folder Structure:\
 --------src:\
 -----------componentsfolder:\
 ----------------APICALL.js\
+----------------USERAPICALL.js\
 -----------App.js
              
 
