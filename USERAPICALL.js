@@ -1,45 +1,74 @@
-import React,{useState,useEffect,setState,Component} from 'react';
+import React,{Component} from 'react';
 
-const Home2=()=>{
-    const[info,setInfo]=useState({
-        name:"loading !!",
-        temp:"loading",
-        humidity:"loading",
-        desc:"loading",
-    })
+class UserApiCall extends Component 
+{
+    constructor(props)
+    {
+        super(props)
+        this.state=
+        {
+            city:'chennai',
+            name:'',
+            temp:'',
+            humidity:'',
+            desc:''
+        };
 
-    const[location,setCity]=useState("chennai")
-    useEffect(()=>
+        this.updateValue=this.updateValue.bind(this);
+        this.submit=this.submit.bind(this);
+    }
+    
+    updateValue=(event)=>
     {
-        getWeather(location)},[location]
-    )
-    const getWeather=(location)=>
+        this.setState
+        ({
+            city: event.target.value,
+        })
+        
+    }
+    
+    submit=event=>
     {
-         fetch(`http://api.openweathermap.org/data/2.5/weather?q=${location}&appid=bd2d67a73f2dc8279264a2ca534b5bcc`)
+        event.preventDefault();
+        fetch(`http://api.openweathermap.org/data/2.5/weather?q=${this.state.city}&appid=bd2d67a73f2dc8279264a2ca534b5bcc`)
         .then(data=>data.json())
         .then(results=>{
-           console.log(results)
-           setInfo({
+           //console.log(results)
+           this.setState
+           ({
                name:results.name,
                temp:results.main.temp,
                humidity:results.main.humidity,
                desc:results.weather[0].description,
-
            })
         })
     }
-    return(
-        <div>
-            <h1>Weather API</h1>
+    render()
+    {
+        return(
             <div>
-                 Place:{info.name} <br/>
-                 Temperature:{info.temp} <br/>
-                 Humidity:{info.humidity} <br/>
-                 Description: {info.desc} <br/>
-                 Enter the location:<input type="text" value={location} onChange={(e)=>setCity(e.target.value)} />
+                <form onSubmit={this.submit}>
+                    <div>
+                        <label>Enter the location:
+                            <input type="text" 
+                                   value={this.state.city} 
+                                   onChange={this.updateValue}/>
+                        </label>
+                    </div>
+                    <br/>
+                    <div>
+                        <button type="submit">Submit</button>
+                    </div>
+                    <div>
+                       Place:{this.state.name}        <br/>
+                       Temperature:{this.state.temp}  <br/>
+                       Humidity:{this.state.humidity} <br/>
+                       Description: {this.state.desc} <br/>
+                    </div> 
+                </form>
             </div>
-        </div>
-    )
+        )
+    }
 }
 
-export default Home2;
+export default UserApiCall;
