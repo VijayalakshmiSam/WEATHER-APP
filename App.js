@@ -1,7 +1,7 @@
 import './App.css';
 import React,{Component} from 'react'
 import Home from './components/APICALL' 
-import Home2 from './components/USERAPICALL'
+import UserApiCall from './components/USERAPICALL'
 
 class App extends Component 
 {
@@ -9,7 +9,7 @@ class App extends Component
   {
     return(
       <div className="App">
-            <Home2/>
+            <UserApiCall/>
       </div>
     )
   }
